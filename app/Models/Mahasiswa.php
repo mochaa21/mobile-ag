@@ -7,14 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     protected $fillable = [
-        'nama_lengkap',
         'nim',
+        'nama_lengkap',
         'program_studi',
-        'semester_aktif'
+        'semester_aktif',
+        'prodi',
+        'semester',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'nim', 'nim');
+    }
 
     public function riwayat_prestasis()
     {
-        return $this->hasMany(RiwayatPrestasi::class);
+        return $this->hasMany(RiwayatPrestasi::class, 'mahasiswa_id');
     }
 }

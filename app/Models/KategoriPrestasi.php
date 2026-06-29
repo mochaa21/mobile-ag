@@ -10,6 +10,6 @@ class KategoriPrestasi extends Model
 
     public function riwayat_prestasis()
     {
-        return $this->hasMany(RiwayatPrestasi::class);
+        return $this->hasMany(RiwayatPrestasi::class, 'kategori_id');
     }
 }
